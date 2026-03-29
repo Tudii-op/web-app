@@ -1,12 +1,21 @@
-// app/api/packages/route.ts
-export async function GET() {
-  return Response.json([
-    {
-      id: "1",
-      name: "video-capture",
-      description: "video-capture version",
-      downloadUrl: "https://your-cdn.com/vid_capture.zip",
-      imageUrl: "/cool.png"
-    }
-  ]);
+import { NextRequest, NextResponse } from "next/server";
+type Package = {
+  id: string;
+  name: string;
+  description: string;
+  downloadUrl: string;
+};
+
+// Dummy package data — replace with real data later
+const packages: Package[] = [
+  {
+    id: "1",
+    name: "Video Capture Test",
+    description: "A dummy package for testing video capture.",
+    downloadUrl: "/packages/video_capture.zip",
+  }
+];
+
+export async function GET(req: NextRequest) {
+  return NextResponse.json(packages);
 }
